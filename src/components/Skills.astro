@@ -1,0 +1,131 @@
+---
+const skillCategories = [
+  {
+    id: 'frontend',
+    label: 'Frontend / JS',
+    skills: [
+      { name: 'JavaScript ES6+', level: 90 },
+      { name: 'Fetch API / REST', level: 88 },
+      { name: 'Async / Await', level: 90 },
+      { name: 'Promises & Callbacks', level: 85 },
+      { name: 'OOP con Classes ES6', level: 85 },
+      { name: 'Arrow Functions', level: 95 },
+      { name: 'Generadores / Iteradores', level: 75 },
+      { name: 'Astro Framework', level: 80 },
+    ],
+  },
+  {
+    id: 'backend',
+    label: 'Backend',
+    skills: [
+      { name: 'C# / .NET', level: 82 },
+      { name: 'Entity Framework', level: 80 },
+      { name: 'LINQ', level: 78 },
+      { name: 'Programación Asincrónica', level: 85 },
+      { name: 'Inyección de Dependencias', level: 78 },
+      { name: 'REST APIs', level: 85 },
+      { name: 'SQL / Bases de Datos', level: 75 },
+    ],
+  },
+  {
+    id: 'tools',
+    label: 'Herramientas',
+    skills: [
+      { name: 'Git / GitHub', level: 88 },
+      { name: 'Postman', level: 90 },
+      { name: 'Azure DevOps', level: 82 },
+      { name: 'Jira', level: 85 },
+      { name: 'VS Code', level: 95 },
+      { name: 'CI/CD Pipelines', level: 75 },
+    ],
+  },
+  {
+    id: 'ai',
+    label: 'Inteligencia Artificial',
+    skills: [
+      { name: 'Desarrollo con IA', level: 80 },
+      { name: 'Creación de Chatbots', level: 82 },
+      { name: 'Integración LLMs / APIs', level: 78 },
+      { name: 'Prompt Engineering', level: 80 },
+      { name: 'Automatización con IA', level: 75 },
+    ],
+  },
+];
+---
+
+<section class="section" id="skills">
+  <div class="container">
+    <div class="skills__header reveal">
+      <p class="section-label">Habilidades</p>
+      <h2 class="section-title">Mi stack técnico</h2>
+      <p class="skills__sub">
+        Tecnologías que uso en el día a día para construir productos robustos y escalables.
+      </p>
+    </div>
+    <div class="skills__grid">
+      {skillCategories.map((cat, catIdx) => (
+        <div class={`skill-cat reveal reveal-delay-${catIdx % 4 + 1}`}>
+          <div class="skill-cat__header">
+            <h3 class="skill-cat__title">{cat.label}</h3>
+          </div>
+          <div class="skill-cat__list">
+            {cat.skills.map((skill) => (
+              <div class="skill-item">
+                <div class="skill-item__top">
+                  <span class="skill-item__name">{skill.name}</span>
+                  <span class="skill-item__pct">{skill.level}%</span>
+                </div>
+                <div class="skill-bar" role="progressbar" aria-valuenow={skill.level} aria-valuemin={0} aria-valuemax={100}>
+                  <div class="skill-bar__fill" style={`--target: ${skill.level}%`}></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills__header { max-width: 42rem; margin-bottom: 3.5rem; }
+  .skills__sub { color: var(--text-secondary); font-size: 1rem; margin-top: 0.5rem; }
+  .skills__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-cat {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    transition: border-color var(--transition-base), transform var(--transition-base);
+  }
+  .skill-cat:hover { border-color: var(--border-light); transform: translateY(-4px); }
+  .skill-cat__header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-cat__title {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+  }
+  .skill-cat__list { display: flex; flex-direction: column; gap: 0.85rem; }
+  .skill-item__top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem; }
+  .skill-item__name { font-size: 0.82rem; color: var(--text-secondary); }
+  .skill-item__pct { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); }
+  .skill-bar { height: 3px; background: var(--border); border-radius: 99px; overflow: hidden; }
+  .skill-bar__fill {
+    height: 100%; width: 0;
+    background: linear-gradient(to right, var(--accent-dim), var(--accent));
+    border-radius: 99px;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .skill-cat.visible .skill-bar__fill { width: var(--target); }
+  @media (max-width: 600px) { .skills__grid { grid-template-columns: 1fr; } }
+</style>

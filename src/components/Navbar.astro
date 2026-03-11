@@ -1,0 +1,168 @@
+---
+const navLinks = [
+  { label: 'Inicio', href: '#hero' },
+  { label: 'Sobre mí', href: '#about' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Proyectos', href: '#projects' },
+  { label: 'Experiencia', href: '#experience' },
+  { label: 'Contacto', href: '#contact' },
+];
+---
+
+<header class="navbar" id="navbar">
+  <div class="container navbar__inner">
+    <a href="#hero" class="navbar__logo">
+      <span class="logo-bracket">&lt;</span>
+      <span class="logo-name">TuNombre</span>
+      <span class="logo-bracket"> /&gt;</span>
+    </a>
+    <nav class="navbar__nav" aria-label="Navegación principal">
+      {navLinks.map((link) => (
+        <a href={link.href} class="nav-link">{link.label}</a>
+      ))}
+    </nav>
+    <a href="#contact" class="btn btn-primary navbar__cta">Contrátame</a>
+    <button class="navbar__burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav>
+      {navLinks.map((link) => (
+        <a href={link.href} class="mobile-nav-link">{link.label}</a>
+      ))}
+      <a href="#contact" class="btn btn-primary" style="margin-top:1rem;width:100%;justify-content:center;">
+        Contrátame
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    transition: all 0.3s ease;
+    padding-block: 1.25rem;
+  }
+  .navbar.scrolled {
+    background: rgba(8, 12, 14, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding-block: 0.85rem;
+  }
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .navbar__logo {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .logo-bracket { color: var(--accent); }
+  .logo-name { color: var(--text-primary); margin-inline: 0.1em; }
+  .navbar__nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: auto;
+  }
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-fast), background var(--transition-fast);
+    text-decoration: none;
+  }
+  .nav-link:hover { color: var(--accent); background: var(--accent-glow); }
+  .navbar__cta { font-size: 0.72rem; padding: 0.55rem 1.1rem; }
+  .navbar__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: auto;
+  }
+  .navbar__burger span {
+    display: block;
+    width: 22px; height: 1.5px;
+    background: var(--text-primary);
+    transition: all var(--transition-base);
+    transform-origin: center;
+  }
+  .navbar__burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .navbar__burger.open span:nth-child(2) { opacity: 0; }
+  .navbar__burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: rgba(8, 12, 14, 0.98);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    animation: slideDown 0.3s ease;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu nav { display: flex; flex-direction: column; gap: 0.25rem; }
+  .mobile-nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+  .mobile-nav-link:hover { color: var(--accent); background: var(--accent-glow); }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 900px) {
+    .navbar__nav, .navbar__cta { display: none; }
+    .navbar__burger { display: flex; }
+    .navbar__inner { justify-content: space-between; }
+  }
+</style>
+
+<script>
+  const navbar = document.getElementById('navbar')!;
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  const burger = document.getElementById('burger')!;
+  const mobileMenu = document.getElementById('mobileMenu')!;
+
+  burger.addEventListener('click', () => {
+    const isOpen = burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', isOpen);
+    burger.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+  });
+
+  mobileMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    });
+  });
+</script>

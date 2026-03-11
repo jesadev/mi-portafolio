@@ -1,0 +1,157 @@
+---
+const timeline = [
+  {
+    year: '2024 — Presente',
+    role: 'Software Developer',
+    company: 'Empresa Actual',
+    type: 'Full-time',
+    desc: 'Desarrollo de aplicaciones empresariales con JavaScript moderno y C#. Integración de inteligencia artificial en flujos de trabajo. Gestión de proyectos con Azure DevOps y Jira.',
+    tags: ['JavaScript', 'C#', 'Azure DevOps', 'IA', 'REST APIs'],
+  },
+  {
+    year: '2023 — 2024',
+    role: 'Junior Developer',
+    company: 'Empresa Anterior',
+    type: 'Full-time',
+    desc: 'Desarrollo frontend con JavaScript ES6+, consumo de APIs REST con Fetch API, y colaboración en proyectos backend con Entity Framework y LINQ.',
+    tags: ['JavaScript', 'Fetch API', 'Entity Framework', 'LINQ'],
+  },
+  {
+    year: '2022 — 2023',
+    role: 'Practicante de Desarrollo',
+    company: 'Primera Empresa',
+    type: 'Pasantía',
+    desc: 'Primeros pasos en desarrollo de software. Aprendizaje de fundamentos de JavaScript, C#, programación orientada a objetos y metodologías ágiles.',
+    tags: ['JavaScript', 'C#', 'OOP', 'Agile', 'Git'],
+  },
+  {
+    year: '2018 — 2022',
+    role: 'Ingeniería de Software',
+    company: 'Universidad',
+    type: 'Grado',
+    desc: 'Graduado como Ingeniero de Software. Fundamentos de ciencias de la computación, algoritmos, estructuras de datos y desarrollo de software.',
+    tags: ['Algoritmos', 'Estructuras de Datos', 'SQL', 'OOP'],
+  },
+];
+---
+
+<section class="section" id="experience">
+  <div class="container">
+    <div class="exp__header reveal">
+      <p class="section-label">Trayectoria</p>
+      <h2 class="section-title">
+        Experiencia &<br /><em class="text-accent">formación</em>
+      </h2>
+    </div>
+
+    <div class="exp__inner">
+      <div class="exp__timeline">
+        {timeline.map((item, i) => (
+          <div class={`exp-item reveal reveal-delay-${(i % 4) + 1}`}>
+            <div class="exp-item__dot"><span></span></div>
+            <div class="exp-item__content card">
+              <div class="exp-item__meta">
+                <span class="exp-item__year">{item.year}</span>
+                <span class="exp-item__type">{item.type}</span>
+              </div>
+              <h3 class="exp-item__role">{item.role}</h3>
+              <p class="exp-item__company">{item.company}</p>
+              <p class="exp-item__desc">{item.desc}</p>
+              <div class="exp-item__tags">
+                {item.tags.map(tag => <span class="tag">{tag}</span>)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <aside class="exp__aside reveal reveal-delay-2">
+        <h3 class="aside-title">Logros destacados</h3>
+        <ul class="aside-list">
+          <li class="aside-item">
+            <span class="aside-icon">🎓</span>
+            <div>
+              <strong>Grado en Ingeniería de Software</strong>
+              <p>Título universitario en ciencias de la computación</p>
+            </div>
+          </li>
+          <li class="aside-item">
+            <span class="aside-icon">🤖</span>
+            <div>
+              <strong>Desarrollo con IA</strong>
+              <p>Chatbots y herramientas con modelos de lenguaje</p>
+            </div>
+          </li>
+          <li class="aside-item">
+            <span class="aside-icon">⚡</span>
+            <div>
+              <strong>JavaScript Moderno</strong>
+              <p>ES6+, Async/Await, Generators, OOP</p>
+            </div>
+          </li>
+          <li class="aside-item">
+            <span class="aside-icon">☁️</span>
+            <div>
+              <strong>Azure DevOps</strong>
+              <p>CI/CD pipelines y gestión de proyectos</p>
+            </div>
+          </li>
+        </ul>
+        <div class="aside-cta">
+          <p>¿Quieres saber más?</p>
+          <a href="/cv-tu-nombre.pdf" class="btn btn-outline" download>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Descargar CV completo
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .exp__header { max-width: 32rem; margin-bottom: 3.5rem; }
+  .exp__inner { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; align-items: start; }
+  .exp__timeline { position: relative; display: flex; flex-direction: column; gap: 0; }
+  .exp__timeline::before {
+    content: ''; position: absolute;
+    left: 11px; top: 12px; bottom: 12px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--border), transparent);
+  }
+  .exp-item { display: flex; gap: 1.5rem; padding-bottom: 1.5rem; }
+  .exp-item:last-child { padding-bottom: 0; }
+  .exp-item__dot { position: relative; flex-shrink: 0; width: 24px; margin-top: 1.75rem; z-index: 1; }
+  .exp-item__dot span {
+    display: block; width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--bg-primary);
+    box-shadow: 0 0 0 3px var(--accent-glow); margin-left: 7px;
+  }
+  .exp-item__content { flex: 1; }
+  .exp-item__meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.35rem; }
+  .exp-item__year { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); }
+  .exp-item__type {
+    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent-dim);
+    background: var(--accent-glow); border: 1px solid rgba(184,255,53,0.15);
+    padding: 0.1rem 0.45rem; border-radius: 99px;
+  }
+  .exp-item__role { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.15rem; }
+  .exp-item__company { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); margin-bottom: 0.75rem; }
+  .exp-item__desc { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.75rem; }
+  .exp-item__tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .exp__aside { position: sticky; top: 6rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.75rem; }
+  .aside-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .aside-list { display: flex; flex-direction: column; gap: 1.25rem; list-style: none; margin-bottom: 2rem; }
+  .aside-item { display: flex; gap: 0.75rem; align-items: flex-start; }
+  .aside-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .aside-item strong { display: block; font-size: 0.85rem; color: var(--text-primary); font-weight: 600; margin-bottom: 0.15rem; }
+  .aside-item p { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; max-width: none; }
+  .aside-cta { padding-top: 1.25rem; border-top: 1px solid var(--border); }
+  .aside-cta p { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .aside-cta .btn { width: 100%; justify-content: center; font-size: 0.72rem; }
+  @media (max-width: 900px) { .exp__inner { grid-template-columns: 1fr; } .exp__aside { position: static; } }
+</style>

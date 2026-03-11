@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "title": "API REST con C# y .NET",
+    "description": "Backend robusto con arquitectura limpia, Entity Framework, inyección de dependencias y programación asincrónica. Incluye autenticación JWT y documentación con Swagger.",
+    "tags": ["C#", ".NET", "Entity Framework", "SQL Server", "JWT"],
+    "category": "backend",
+    "github": "https://github.com/tu-usuario/api-rest-dotnet",
+    "demo": null,
+    "featured": true,
+    "year": "2024"
+  },
+  {
+    "id": 2,
+    "title": "Chatbot con IA Integrada",
+    "description": "Chatbot inteligente para atención al cliente con integración de modelos de lenguaje, flujos conversacionales dinámicos y panel de administración en tiempo real.",
+    "tags": ["JavaScript", "Node.js", "OpenAI API", "Fetch API", "JSON"],
+    "category": "ai",
+    "github": "https://github.com/tu-usuario/ai-chatbot",
+    "demo": "https://demo.tu-portfolio.com",
+    "featured": true,
+    "year": "2024"
+  },
+  {
+    "id": 3,
+    "title": "Dashboard Interactivo",
+    "description": "Panel de control con consumo de APIs REST, visualización de datos en tiempo real, gráficos dinámicos y arquitectura orientada a componentes con JavaScript moderno.",
+    "tags": ["JavaScript ES6+", "Fetch API", "Async/Await", "Charts.js", "REST API"],
+    "category": "frontend",
+    "github": "https://github.com/tu-usuario/dashboard-interactivo",
+    "demo": "https://demo.tu-portfolio.com",
+    "featured": true,
+    "year": "2023"
+  },
+  {
+    "id": 4,
+    "title": "Gestor de Tareas con Clases ES6",
+    "description": "Aplicación de gestión de tareas construida con programación orientada a objetos usando ES6 Classes, Promises y patrones de diseño modernos en JavaScript.",
+    "tags": ["JavaScript", "OOP", "Classes ES6", "LocalStorage", "CSS3"],
+    "category": "frontend",
+    "github": "https://github.com/tu-usuario/task-manager",
+    "demo": null,
+    "featured": false,
+    "year": "2023"
+  },
+  {
+    "id": 5,
+    "title": "Integración Azure DevOps Pipeline",
+    "description": "Automatización de pipelines CI/CD en Azure DevOps con builds automatizados, pruebas integradas y despliegue continuo a múltiples entornos.",
+    "tags": ["Azure DevOps", "CI/CD", "YAML", "Git", "Automatización"],
+    "category": "devops",
+    "github": "https://github.com/tu-usuario/azure-pipeline",
+    "demo": null,
+    "featured": false,
+    "year": "2024"
+  },
+  {
+    "id": 6,
+    "title": "Consumidor de APIs con Generadores",
+    "description": "Librería utilitaria para consumo eficiente de APIs paginadas usando Generadores e Iteradores de JavaScript, con manejo avanzado de asincronía.",
+    "tags": ["JavaScript", "Generators", "Iterators", "Fetch API", "Async/Await"],
+    "category": "frontend",
+    "github": "https://github.com/tu-usuario/api-generators",
+    "demo": null,
+    "featured": false,
+    "year": "2023"
+  }
+]
